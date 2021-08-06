@@ -1,8 +1,10 @@
 import UserTest from '../Database/Models/UserTest.model'
+import jsonResult from '../Helpers/Result'
 
 export const getUsersTest = async (req, res ) => {
     const usersTests =  await UserTest.find()
-    res.json(usersTests)
+    let result = new jsonResult(true, false, usersTests, 'Test message .')
+    res.json(result)
 }
 
 export const createUserTest = async (req, res) => {
