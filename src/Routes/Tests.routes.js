@@ -1,17 +1,10 @@
 import { Router } from "express";
-import UserTest from '../Database/Models/UserTest'
+import * as TestsController from '../Controllers/Tests.controller'
 
 const router = Router()
 
-router.get('/test', (req, res) => {
- 
-    const newUser = new UserTest({
-        names: "usert test",
-        age: 22
-    })
-   
-    newUser.save()
-    res.send('test')
-})
+router.get('/', TestsController.getUsersTest)
+
+router.post('/', TestsController.createUserTest )
 
 export default router;

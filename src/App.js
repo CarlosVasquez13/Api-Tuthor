@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 })
 
 // config export routes
-app.use('/Api', Routes)
+app.use('/Api/tests', Routes)
 app.use((req, res, next) => {
     console.info("Udefined route")
     res.send("Undefined route")
