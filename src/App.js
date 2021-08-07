@@ -1,6 +1,7 @@
 import e from 'express'
 import express from 'express'
-import Routes from './Routes/Tests.routes'
+//import Routes from './Routes/Tests.routes'
+import Routes from './Routes/Api.routes'
 
 // export routes
 
@@ -18,7 +19,7 @@ app.get('/', (req, res) => {
 })
 
 // config export routes
-app.use('/Api/tests', Routes)
+app.use('/Api', Routes)
 app.use((req, res, next) => {
     console.info("Udefined route")
     res.send("Undefined route")

@@ -6,10 +6,10 @@ const router = Router()
 
 router
 	.get('/tutors', TutorController.getTutors)
-	.post('/tutors', TutorController.createTutor );
+	.post('/tutors/create', TutorController.createTutor );
 
 router
 	.get('/users', UserController.getUsers)
-	.post('/users', UserController.createUser );
+	.post('/users/create', UserController.createUser );
 
 export default router;

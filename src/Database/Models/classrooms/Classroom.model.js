@@ -13,7 +13,7 @@ const ClassroomSchema = new Schema({
         required: true
     },
 	users: [{
-		user: {
+		user_id: {
 			type: Schema.Types.ObjectId,
         	ref: 'User'
 		} 
