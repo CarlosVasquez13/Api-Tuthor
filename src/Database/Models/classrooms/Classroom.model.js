@@ -7,6 +7,14 @@ const ClassroomSchema = new Schema({
         type: String,
         required: true
     },
+    description: {
+        type: String,
+        required: true
+    },
+    category: {
+        type: String,
+        required: true
+    },
 	tutor: {
         type: Schema.Types.ObjectId,
 		ref: 'Tutor',

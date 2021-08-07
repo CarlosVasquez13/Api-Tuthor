@@ -2,7 +2,7 @@ import { Schema, model} from 'mongoose'
 
 
 const UserTestSchema = new Schema({
-    name: {
+    names: {
         type: String,
         required: true,
         trim: true
@@ -26,6 +26,10 @@ const UserTestSchema = new Schema({
         type: Number,
         required: true,
     },
+    dni: {
+        type: String,
+        required: true,
+    }
 }, {
     versionKey: false,
     timestamps: true

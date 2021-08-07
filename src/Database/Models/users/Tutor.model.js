@@ -2,10 +2,11 @@ import { Schema, model} from 'mongoose'
 
 
 const TutorTestSchema = new Schema({
-	user_id: {
+	user: {
         type: Schema.Types.ObjectId,
         required: true,
-        trim: true
+        ref: 'User',
+        autopopulate: true,
     },
     title: {
         type: String,
@@ -15,7 +16,8 @@ const TutorTestSchema = new Schema({
 	classrooms: [{
 		classroom: {
 			type: Schema.Types.ObjectId,
-        	ref: 'Classroom'
+        	ref: 'Classroom',
+            autopopulate: true,
 		}       
     }],
 	
