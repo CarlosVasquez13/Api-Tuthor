@@ -19,6 +19,8 @@ const UserTestSchema = new Schema({
     },
 	pass: {
         type: String,
+		min: 6,
+		max: 128,
         required: true,
         trim: true
     },

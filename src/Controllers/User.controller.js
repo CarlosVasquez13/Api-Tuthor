@@ -3,6 +3,7 @@
 import User from '../Database/Models/users/User.model'
 import Tutor from '../Database/Models/users/Tutor.model'
 import jsonResult from '../Helpers/Result'
+import bcrypt from 'bcrypt'
 
 export const getUsers = async (req, res ) => {
     const users =  await User.find()
@@ -16,8 +17,12 @@ export const getUser = async (req, res ) => {
 
 export const createUser = async (req, res) => {
     let result = new jsonResult(true, false, null, '')
-
-    const newUser = new User({
+	
+	// hash contraseña
+    const salt = await bcrypt.genSalt(10);
+    req.body.password = await bcrypt.hash(req.body.password, salt);
+	
+	const newUser = new User({
         names: req.body.names,
 		phone: req.body.phone,
 		email: req.body.email,

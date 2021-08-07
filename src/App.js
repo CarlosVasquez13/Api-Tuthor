@@ -4,6 +4,11 @@ import express from 'express'
 import Routes from './Routes/Api.routes'
 import testRoutes from './Routes/Tests.routes'
 import cors from 'cors'
+import bodyparser from 'body-parser'
+
+const authRoutes = require('./Routes/auth');
+
+require('dotenv').config();
 
 // export routes
 
@@ -13,7 +18,9 @@ const app = express()
 // server port 
 app.set('port', process.env.PORT || 3000)
 
-app.use(express.json())
+//app.use(express.json())
+app.use(bodyparser.urlencoded({ extended: false }));
+app.use(bodyparser.json());
 
 //cors
 app.use(cors());
@@ -31,13 +38,14 @@ app.get('/', (req, res) => {
 })
 
 // config export routes
+app.use('/', authRoutes);
 app.use('/Api', Routes)
 
 app.use('/Api/tests', testRoutes)
 
 app.use((req, res, next) => {
     console.info("Udefined route")
-    res.send("Undefined route")
+    //res.send("Undefined route")
 })
 
 export default app;
