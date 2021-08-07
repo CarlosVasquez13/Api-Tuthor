@@ -3,6 +3,7 @@ import express from 'express'
 //import Routes from './Routes/Tests.routes'
 import Routes from './Routes/Api.routes'
 import testRoutes from './Routes/Tests.routes'
+import cors from 'cors'
 
 // export routes
 
@@ -13,6 +14,16 @@ const app = express()
 app.set('port', process.env.PORT || 3000)
 
 app.use(express.json())
+
+//cors
+app.use(cors());
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 
 // initial route
 app.get('/', (req, res) => {
