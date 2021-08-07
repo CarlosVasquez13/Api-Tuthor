@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/Index.js",
-    "devStart": "nodemon src/Index.js --exec babel-node"
+    "dev": "nodemon src/Index.js --exec babel-node",
+    "build": "babel src --out-dir dist",
+    "start": "node dist/Index.js"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,7 @@
     "@babel/cli": "^7.14.8",
     "@babel/core": "^7.15.0",
     "@babel/node": "^7.14.9",
+    "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
     "nodemon": "^2.0.12"
   }
