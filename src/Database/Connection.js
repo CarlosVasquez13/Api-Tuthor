@@ -1,7 +1,7 @@
-import mongoose from 'mongoose'
+var  mongoose = require('mongoose')
 
 
-( async ( ) => {
+const connectDb =   async ( ) => {
     await mongoose.connect('mongodb+srv://Test:Sbcrh8QaFTQ0zLGM@cluster0.fnlxs.mongodb.net/developmentDB?retryWrites=true&w=majority', {
         useCreateIndex: true,
         useUnifiedTopology: true,
@@ -12,4 +12,6 @@ import mongoose from 'mongoose'
     }).catch(err => {
         console.info(err)
     })
-})();
+}
+
+module.exports = connectDb;

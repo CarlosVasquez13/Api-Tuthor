@@ -1,7 +1,6 @@
-import { Schema, model} from 'mongoose'
+var mongoose = require('mongoose')
 
-
-const UserTestSchema = new Schema({
+const UserTestSchema = new mongoose.Schema({
     names: {
         type: String,
         required: true,
@@ -38,4 +37,4 @@ const UserTestSchema = new Schema({
 });
 
 
-export default model('User', UserTestSchema)
+module.exports = mongoose.model('User', UserTestSchema)

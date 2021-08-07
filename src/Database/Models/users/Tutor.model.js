@@ -1,9 +1,9 @@
-import { Schema, model} from 'mongoose'
+var mongoose = require('mongoose')
 
 
-const TutorTestSchema = new Schema({
+const TutorTestSchema = new mongoose.Schema({
 	user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User',
         autopopulate: true,
@@ -15,7 +15,7 @@ const TutorTestSchema = new Schema({
     },
 	classrooms: [{
 		classroom: {
-			type: Schema.Types.ObjectId,
+			type: mongoose.Schema.Types.ObjectId,
         	ref: 'Classroom',
             autopopulate: true,
 		}       
@@ -27,4 +27,4 @@ const TutorTestSchema = new Schema({
 });
 
 
-export default model('Tutor', TutorTestSchema)
+module.exports =  mongoose.model('Tutor', TutorTestSchema)

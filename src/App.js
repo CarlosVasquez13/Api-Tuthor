@@ -1,11 +1,9 @@
-import e from 'express'
-import express from 'express'
+var express = require('express')
 //import Routes from './Routes/Tests.routes'
-import Routes from './Routes/Api.routes'
-import testRoutes from './Routes/Tests.routes'
-import cors from 'cors'
-import bodyparser from 'body-parser'
-
+var Routes = require('./Routes/Api.routes')
+var testRoutes = require('./Routes/Tests.routes')
+var cors = require('cors')
+var  bodyparser = require('body-parser')
 const authRoutes = require('./Routes/auth');
 
 require('dotenv').config();
@@ -33,19 +31,19 @@ app.use(function(req, res, next) {
 
 
 // initial route
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
     res.send('Api Tuthor')
 })
 
 // config export routes
-app.use('/', authRoutes);
-app.use('/Api', Routes)
+app.use("/", authRoutes);
+app.use("/Api", Routes)
 
-app.use('/Api/tests', testRoutes)
+app.use("/Api/tests", testRoutes)
 
 app.use((req, res, next) => {
     console.info("Udefined route")
     //res.send("Undefined route")
 })
 
-export default app;
+module.exports = app;

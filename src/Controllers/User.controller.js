@@ -1,21 +1,21 @@
 "use strict";
 
-import User from '../Database/Models/users/User.model'
-import Tutor from '../Database/Models/users/Tutor.model'
-import jsonResult from '../Helpers/Result'
-import bcrypt from 'bcrypt'
+var User = require('../Database/Models/users/User.model')
+var Tutor = require('../Database/Models/users/Tutor.model')
+var jsonResult = require('../Helpers/Result')
+var bcrypt = require('bcrypt')
 
-export const getUsers = async (req, res ) => {
+const getUsers = async (req, res ) => {
     const users =  await User.find()
     res.json(users)
 }
 
-export const getUser = async (req, res ) => {
+const getUser = async (req, res ) => {
     const user =  await Tutor.findById(req.user._id, '')
     res.json(user)
 }
 
-export const createUser = async (req, res) => {
+const createUser = async (req, res) => {
     let result = new jsonResult(true, false, null, '')
 	
 	// hash contraseña
@@ -44,4 +44,10 @@ export const createUser = async (req, res) => {
         }
         res.json(result)
     })
+}
+
+module.exports = {
+    getUsers,
+    getUser,
+    createUser
 }

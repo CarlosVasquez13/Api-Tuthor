@@ -1,8 +1,8 @@
-import { Router } from "express";
-import * as TutorController from '../Controllers/Tutor.controller'
-import * as UserController from '../Controllers/User.controller'
+var  express = require("express");
+var TutorController = require('../Controllers/Tutor.controller')
+var UserController = require('../Controllers/User.controller')
 
-const router = Router()
+const router = express.Router()
 
 router
 	.get('/tutors', TutorController.getTutors)
@@ -12,4 +12,4 @@ router
 	.get('/users', UserController.getUsers)
 	.post('/users/create', UserController.createUser );
 
-export default router;
+module.exports = router;

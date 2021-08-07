@@ -1,7 +1,7 @@
-import { Schema, model} from 'mongoose'
+var mongoose = require('mongoose')
 
 
-const ClassroomSchema = new Schema({
+const ClassroomSchema = new mongoose.Schema({
 	
     name: {
         type: String,
@@ -41,4 +41,4 @@ const ClassroomSchema = new Schema({
 });
 
 
-export default model('Classroom', ClassroomSchema)
+module.exports =  mongoose.model('Classroom', ClassroomSchema)

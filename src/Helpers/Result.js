@@ -8,4 +8,4 @@ class Result {
         this.message = message
     }
 }
-export default Result;
+module.exports =  Result;

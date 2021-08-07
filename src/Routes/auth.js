@@ -1,11 +1,11 @@
-import { Router } from "express";
-import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
-import User from '../Database/Models/users/User.model'
-import * as UserController from '../Controllers/User.controller'
+var express = require("express");
+var bycrypt = require('bcrypt');
+var jwt = require('jsonwebtoken');
+var User = require('../Database/Models/users/User.model');
+var UserController = require('../Controllers/User.controller');
 
 
-const router = Router();
+const router = express.Router();
 
 router.post('/register', UserController.createUser);
 router.post('/login', async (req, res) => {
@@ -15,7 +15,7 @@ router.post('/login', async (req, res) => {
 	if(!user) 
 		return res.status(400).json({ error: ' Usuario o contrasena erronea'});
 	
-	const validPassword = await bcrypt.compare(req.body.password, user.pass);
+	const validPassword = await bycrypt.compare(req.body.password, user.pass);
 	if(!validPassword) 
 		return res.status(400).json({ error: ' Usuario o contrasena erronea'});
 	

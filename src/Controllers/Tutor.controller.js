@@ -1,18 +1,18 @@
 "use strict";
 
-import Tutor from '../Database/Models/users/Tutor.model'
+var Tutor = require('../Database/Models/users/Tutor.model')
 
-export const getTutors = async (req, res ) => {
+const  getTutors = async (req, res ) => {
     const tutors =  await Tutor.find()
     res.json(tutors)
 }
 
-export const getTutor = async (req, res ) => {
+const getTutor = async (req, res ) => {
     const tutor =  await Tutor.findById(req.tutor._id, '')
     res.json(tutor)
 }
 
-export const createTutor = async (req, res) => {
+const createTutor = async (req, res) => {
     const newTutor = new Tutor({
         names: req.body.names,
 		phone: req.body.phone,
@@ -21,4 +21,11 @@ export const createTutor = async (req, res) => {
     })
     const result = await newTutor.save();
     res.json(result)
+}
+
+
+module.exports = {
+    getTutor, 
+    getTutors,
+    createTutor
 }

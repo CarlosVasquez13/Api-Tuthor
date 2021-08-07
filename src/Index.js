@@ -1,6 +1,7 @@
-import app from './App'
-import './Database/Connection'
+var  app = require('./App')
+var  db = require('./Database/Connection')
 
+db()
 // Start server 
 app.listen(app.get('port'), () => {
     
