@@ -11,8 +11,24 @@ const getUsers = async (req, res ) => {
 }
 
 const getUser = async (req, res ) => {
-    const user =  await Tutor.findById(req.user._id, '')
-    res.json(user)
+    User.findById(req.params._id)
+    .then(user => {
+        if(!user) {
+            return res.status(404).send({
+                message: "User not found with id " + req.params._id
+            });            
+        }
+        res.send(user);
+    }).catch(err => {
+        if(err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message: "User not found with id " + req.params._id
+            });                
+        }
+        return res.status(500).send({
+            message: "Error retrieving user with id " + req.params._id
+        });
+    });
 }
 
 const createUser = async (req, res) => {
@@ -37,13 +53,17 @@ const createUser = async (req, res) => {
         if (response.tutor === 1) {
             let newTutor = new Tutor({
                 user: response._id,
-                title: req.body.tutor.title,
+                title: req.body.title,
                 classrooms: []
             })
             const tutorResult = await newTutor.save()
         }
         res.json(result)
     })
+}
+
+const updateUser = async (req, res) => {
+
 }
 
 module.exports = {

@@ -8,8 +8,13 @@ const  getTutors = async (req, res ) => {
 }
 
 const getTutor = async (req, res ) => {
-    const tutor =  await Tutor.findById(req.tutor._id, '')
-    res.json(tutor)
+    Tutor.findById(req.params._id)
+     .populate('user', 'names')
+     .populate('user', 'email').exec(function(err, tutor){
+         if(err)
+            res.send(err);
+        res.json(tutor);
+    });
 }
 
 const createTutor = async (req, res) => {

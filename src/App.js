@@ -4,7 +4,8 @@ var Routes = require('./Routes/Api.routes')
 var testRoutes = require('./Routes/Tests.routes')
 var cors = require('cors')
 var  bodyparser = require('body-parser')
-const authRoutes = require('./Routes/auth');
+const authRoutes = require('./Routes/auth')
+const verifyToken = require('./Routes/validate')
 
 require('dotenv').config();
 
@@ -37,7 +38,7 @@ app.get("/", (req, res) => {
 
 // config export routes
 app.use("/", authRoutes);
-app.use("/Api", Routes)
+app.use("/Api", verifyToken, Routes)
 
 app.use("/Api/tests", testRoutes)
 
