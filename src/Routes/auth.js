@@ -30,7 +30,7 @@ router.post('/login', async (req, res) => {
 	},"miClaveUltraSuperMegaSecreta123", { expiresIn: '14400s' })
 	
 	res.header('auth-token', token).json({
-        token: {token}
+        token
     })
 });
 
