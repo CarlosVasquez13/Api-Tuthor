@@ -17,6 +17,14 @@ const getTutor = async (req, res ) => {
     });
 }
 
+const tutorClass = async (req, res) => {
+    console.log(req);
+    Tutor.updateOne(
+        { _id: req.tutor },
+        { $push: { classrooms: req._id } }
+    );
+}
+
 const createTutor = async (req, res) => {
     const newTutor = new Tutor({
         names: req.body.names,
@@ -32,5 +40,6 @@ const createTutor = async (req, res) => {
 module.exports = {
     getTutor, 
     getTutors,
-    createTutor
+    createTutor,
+    tutorClass
 }

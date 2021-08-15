@@ -11,20 +11,18 @@ const ClassroomSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    category: {
+    tag: {
         type: String,
         required: true
     },
 	tutor: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
 		ref: 'Tutor',
         required: true
     },
 	users: [{
-		user_id: {
-			type: Schema.Types.ObjectId,
-        	ref: 'User'
-		} 
+			type: mongoose.Schema.Types.ObjectId,
+        	ref: 'User' 
     }],
 	class_time: {
         type: String,
@@ -34,6 +32,9 @@ const ClassroomSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    zoom_class: {
+        type: String
+    }
 	
 }, {
     versionKey: false,

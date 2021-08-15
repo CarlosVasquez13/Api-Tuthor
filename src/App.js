@@ -39,6 +39,7 @@ app.get("/", (req, res) => {
 // config export routes
 app.use("/", authRoutes);
 app.use("/Api", verifyToken, Routes)
+//app.use("/Api", Routes)
 
 app.use("/Api/tests", testRoutes)
 
