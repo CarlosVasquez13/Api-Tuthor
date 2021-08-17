@@ -10,7 +10,6 @@ const TutorTestSchema = new mongoose.Schema({
     },
     title: {
         type: String,
-        required: true,
         trim: true
     },
 	classrooms: [{
