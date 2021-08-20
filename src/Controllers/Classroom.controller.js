@@ -39,11 +39,12 @@ const deleteClassroom = async (req, res) => {
 }
 
 const createClassroom = async (req, res) => {
+
     const newClassroom = new Classroom({
         name: req.body.name,
 		description: req.body.description,
 		tag: req.body.tag,
-        tutor: req.body.tutor_id,
+        tutor: req.user.id,
         class_time: req.body.class_time,
 		hours: req.body.hours,
         zoom_class: req.body.zoom_class
