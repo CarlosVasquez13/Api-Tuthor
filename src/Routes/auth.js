@@ -26,7 +26,8 @@ router.post('/login', async (req, res) => {
 	
 	const token = jwt.sign({
 		name: user.name,
-		id: user._id
+		id: user._id,
+		isTutor: user.tutor
 	},"miClaveUltraSuperMegaSecreta123", { expiresIn: '14400s' })
 	
 	res.header('auth-token', token).json({
