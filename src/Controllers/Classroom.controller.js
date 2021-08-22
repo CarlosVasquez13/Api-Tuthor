@@ -7,7 +7,13 @@ var TutorController = require('../Controllers/Tutor.controller')
 
 const  getClassrooms = async (req, res ) => {
     const classrooms =  await Classroom.find()
-    res.json(classrooms)
+    .populate('tutor', 'names')
+    .exec(function(err, classroom){
+        if(err)
+           res.send(err);
+       res.json(classroom);
+   });
+    // res.json(classrooms)
 }
 
 const getClassroom = async (req, res ) => {
@@ -49,6 +55,8 @@ const createClassroom = async (req, res) => {
 		hours: req.body.hours,
         zoom_class: req.body.zoom_class
     })
+    console.info('newClassroom', newClassroom);
+    
     const result = await newClassroom.save();
     TutorController.tutorClass(result);
     res.json(result)
